@@ -12,26 +12,21 @@
                thead-tr-class="books-list-tr"
                tbody-tr-class="books-list-tr"
       >
-        <template v-slot:head()="field">
-          <div class="text-center">
+        <template v-slot:head()="{column, field}">
+          <div :class="column == 'title' ? 'text-left' : 'text-center'">
             <span class="text-uppercase text-secondary">{{ field.label }}</span>
           </div>
         </template>
-        <template v-slot:head(title)="field">
-          <div class="text-left">
-            <span class="text-uppercase text-secondary">{{ field.label }}</span>
-          </div>
-        </template>
+
         <template v-slot:cell(title)="data">
           <div class="d-flex">
-            <div class="mr-2"><img :src="data.item.image" class="thumbnail rounded"/></div>
+            <div class="mr-2"><img :src="data.item.image" class="thumbnail rounded book-image"/></div>
             <div class="d-flex flex-column">
               <div class="title mb-1 font-weight-bold">{{ data.item.title }}</div>
               <div class="author text-secondary">{{ data.item.author }}</div>
             </div>
           </div>
         </template>
-
         <template v-slot:cell(publishYear)="data">
           <div class="d-flex align-items-center justify-content-center h-100">
             <span>{{data.item.publishYear}}</span>
@@ -52,7 +47,7 @@
         </template>
 
         <template v-slot:row-details="row">
-            <div v-html="row.item.html"></div>
+            <div class="book-details" v-html="row.item.html"></div>
         </template>
       </b-table>
       <div class="my-4 d-flex justify-content-center w-100">
@@ -68,8 +63,6 @@ import Pagination from "@/components/Pagination.vue";
 import {Book} from "@/models/Book";
 
 
-
-
 @Component({
   components: {
     Pagination,
@@ -77,6 +70,7 @@ import {Book} from "@/models/Book";
 })
 export default class BooksTable extends Vue {
   @Prop() books!: Book[];
+  @Prop({default: 5}) readonly perPage!: number;
   fields = [
     {
       key: 'title',
@@ -96,7 +90,6 @@ export default class BooksTable extends Vue {
       label: 'Buy on',
     }
   ]
-  perPage=5
   currentPage=1
 
   rowClicked(item: any) {

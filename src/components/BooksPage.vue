@@ -5,7 +5,7 @@
             <h3 class="title mb-3">
               Most popular Books of All time
             </h3>
-            <BooksList :books="books" class="books-list"/>
+            <BooksList :books="books" per-page="5" class="books-list"/>
           </b-row>
         </b-container>
     </div>

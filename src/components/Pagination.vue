@@ -2,7 +2,7 @@
   <div class="d-flex">
       <div>
         <b-button
-            class="text-secondary pagination-btn"
+            class="text-secondary pagination-btn prev-button"
             :disabled="prevDisabled"
             variant="link"
             @click="currentPageChanged(value-1)">
@@ -17,7 +17,7 @@
       </div>
       <div>
         <b-button
-            class="text-secondary pagination-btn"
+            class="text-secondary pagination-btn next-button"
             :disabled="nextDisabled"
             variant="link"
             @click="currentPageChanged(value+1)">
