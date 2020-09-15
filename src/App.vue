@@ -1,28 +1,16 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <BooksPage/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import {Component, Vue} from 'vue-property-decorator';
+import BooksPage from "@/components/BooksPage.vue";
 
-export default {
-  name: 'App',
+@Component({
   components: {
-    HelloWorld
-  }
+    BooksPage: BooksPage,
+  },
+})
+export default class App extends Vue {
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

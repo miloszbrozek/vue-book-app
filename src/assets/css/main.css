@@ -1,0 +1,27 @@
+/* Button variant='link' overrides */
+.btn-link:hover {
+    text-decoration: none;
+}
+
+.btn-link:focus {
+    box-shadow: none;
+}
+
+
+/* b-table overrides */
+.b-table.table-hover tbody tr:hover {
+    background-color: initial;
+    cursor: pointer;
+}
+.b-table.table-hover tbody tr.b-table-details:hover {
+    cursor: initial;
+}
+.b-table thead th, .b-table td {
+    border: none
+}
+.b-table tbody tr {
+    outline: none;
+}
+.b-table tbody tr:nth-child(even), .b-table tbody tr:nth-child(even):hover {
+    background-color: #faf9f7;
+}
